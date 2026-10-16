@@ -42,7 +42,19 @@ static jlong ndlopen_bugfix(__attribute__((unused)) JNIEnv *env,
     // This method fixes the issue by being in libpojavexec, and thus being in the classloader namespace
 
     int mode = (int)jmode;
-    return (jlong) dlopen(filename, mode);
+    return (jlong) dlerror(); // Limpa o erro anterior
+void *handle = dlopen(filename, mode);
+
+if (handle == NULL) {
+    const char *error = dlerror();
+    LOGE("Nova Valk Fix: falha ao carregar [%s]: %s",
+         filename,
+         error != NULL ? error : "erro desconhecido");
+} else {
+    LOGI("Nova Valk Fix: biblioteca carregada [%s]", filename);
+}
+
+return (jlong) handle;
 }
 
 /**
