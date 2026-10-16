@@ -1,4 +1,4 @@
-# Battly Mobile
+# Nova Launcher
 
 Battly Mobile is the Android version of Battly Launcher. It runs Minecraft: Java Edition on Android with the Battly account system, Battly skins, mobile controls, modded versions, BattlyWorlds and Battly+ features.
 
